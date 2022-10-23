@@ -1,5 +1,6 @@
 :root {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    --main-font-weight: 300;
 
     --tan: #f1ddbf;
     --blue: #525e75;
@@ -19,9 +20,7 @@
 }
 
 /* GLOBAL RESET */
-html,
-body,
-main {
+html, body, main, h1 {
     margin: 0;
     padding: 0;
 }
@@ -50,7 +49,7 @@ button {
 
 /* Hero Banner */
 .heroContainer {
-    height: 500px;
+    height: 600px;
     width: 100%;
     background-color: var(--blue);
 }
@@ -68,4 +67,16 @@ button {
     -webkit-mask-position: center; 
     mask-position: center;   
     animation: heroFlow 18s ease-in-out alternate infinite;
+}
+
+
+/* Main Page */
+.browse {
+    height: 150px;
+    background-color: var(--dark-green);
+    color: var(--tan);
+    text-align: center;
+    line-height: 150px;
+    font-weight: var(--main-font-weight);
+    font-size: 55px;
 }

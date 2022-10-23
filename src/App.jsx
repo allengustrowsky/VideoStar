@@ -11,10 +11,14 @@ function App() {
     return (
         <div className="App">
             <Hero />
-            <VideoFree />
-            <VideoPaid />
-            <CartWindow />
-            <TheaterWindow />
+            <main>
+                <h1 className="browse">Browse</h1>
+                <VideoFree />
+                <VideoPaid />
+                <CartWindow />
+                <TheaterWindow />
+            </main>
+
         </div>
     )
 }

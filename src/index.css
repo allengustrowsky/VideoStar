@@ -1,11 +1,15 @@
 :root {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     --main-font-weight: 300;
+    --sub-head-font-size: 2rem;
 
     --tan: #f1ddbf;
     --blue: #525e75;
     --dark-green: #78938a;
     --light-green: #92ba92;
+    --dark: #2a2a2a;
+
+    --main-border-radius: 13px;
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -29,6 +33,7 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+    /* background-color: var(--dark-green); */
 }
 
 h1 {
@@ -79,4 +84,188 @@ button {
     line-height: 150px;
     font-weight: var(--main-font-weight);
     font-size: 55px;
+}
+
+/* Recommended Movies */
+.recommendedContainer {
+    height: 500px;
+    background-color: var(--blue);
+}
+
+.recHeaderContainer h2 {
+    padding: 20px 0 0;
+    text-align: center;
+    font-size: var(--sub-head-font-size);
+    font-weight: var(--main-font-weight);
+    color: var(--tan);
+}
+
+.refreshBtn {
+    width: 170px;
+    height: 50px;
+    margin: 0 1.5rem 0 auto;
+    display: inline-block;
+    font-weight: var(--main-font-weight);
+    font-size: 2rem;
+    line-height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+    background-color: var(--light-green);
+    padding: 0;
+    color: var(--dark)
+}
+
+.refreshBtn svg {
+    width: 2rem;
+    height: 2rem;
+    fill: var(--dark);
+}
+
+.recommendedContainer hr {
+    width: 100%;
+    background-color: var(--dark);
+    height: 2px;
+}
+
+.recCardContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 70px;
+    overflow: scroll;
+    padding: 0 20px;
+
+}
+
+/* VideoPaid */
+.videoPaidContainer {
+    width: 355px;
+    height: 271px;
+    background-color: var(--tan);
+    border-radius: var(--main-border-radius);
+}
+
+.thumbnail {
+    display: relative;
+    width: 100%;
+    height: 200px;
+    /* background-color: red; */
+    border-radius: var(--main-border-radius) var(--main-border-radius) 0 0;
+}
+
+.dollar {
+    width: 80px;
+    height: 125px;
+    display: absolute;
+    top: 15px;
+    left: 500px;
+}
+
+
+.videoInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 68px;
+    width: 100%;
+    color: var(--dark);
+}
+
+.videoTitlePaid {
+    margin: 0;
+    padding: 0;
+    /* flex: 7; */
+    /* background-color: red; */
+    height: 100%;
+    width: 280px;
+    padding: 0 3px 0 5px;
+    /* padding: 5px; */
+    
+
+    /* white-space: nowrap; */
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+
+    /* padding: 6% 0; */
+    font-size: 1.1rem;
+    /* font-weight: 500; */
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    /* padding-left: 15px; */
+}
+
+.videoPrice {
+    /* flex: 2; */
+    margin: 0;
+    padding: 0 0 0 2px;
+    /* background-color: orange; */
+    height: 75%;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--dark);
+
+    /* width: 35px; */
+    /* line-height: 100%; */
+}
+.paidThumbnail {
+
+}
+
+/* Gallery Section */
+.gallery {
+    background-color: var(--blue);
+    padding-bottom: 70px;
+    background-color: var(--dark-green);
+}
+
+.galleryHeadContainer {
+    height: 140px;
+    background-color: var(--dark-green);
+}
+
+.galleryHeader {
+    padding: 40px 0 0 0;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 3rem;
+    color: var(--tan);
+    font-weight: var(--main-font-weight);
+}
+
+.filterBtn {
+    width: 100px;
+    height: 50px;
+    background-color: var(--dark-green);
+}
+
+.galleryMain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 35px 10px;
+    width: calc(100% - 100px);
+    margin: 0 auto;
+    background-color: var(--blue);
+}
+
+
+/* Footer */
+footer {
+    height: 80px;
+    background-color: var(--blue);
+}
+
+footer p {
+    text-align: center;
+    line-height: 80px;
+    font-size: 1.15rem;
+    color: var(--tan);
+    margin: 0;
 }

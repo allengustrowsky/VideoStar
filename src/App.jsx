@@ -29,10 +29,7 @@ function App() {
 
     // Get all recommended videos
     const recommendedVideos = () => {
-        let da = data.filter(video => video.isFree === false)
-        console.log("da: " + da)
-        return da
-        // return data.filter(video => video.isFree === false)
+        return data.filter(video => video.isFree === false)
     }
 
     // On mount, set reecommendedFive state to have five recommended 
@@ -64,7 +61,7 @@ function App() {
                     </div>
                     <div className="galleryMain">
                         {recommendedFive.map(video => <VideoPaid
-                            id={video.id}
+                            key={video.id}
                             name={video.name}
                             isPurchased={video.isPurchased}
                             duration={video.duration}

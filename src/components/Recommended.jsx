@@ -23,7 +23,7 @@ const Recommended = (props) => {
             <hr />
             <div className="recCardContainer">
                 {videos.map(video => <VideoPaid
-                    id={video.id}
+                    key={video.id}
                     name={video.name}
                     isPurchased={video.isPurchased}
                     duration={video.duration}

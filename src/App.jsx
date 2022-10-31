@@ -6,9 +6,44 @@ import CartWindow from './components/CardWindow'
 import TheaterWindow from './components/TheaterWindow'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
+import { useEffect } from 'react'
 
 function App() {
+    const [data, setData] = useState([])
+    const [recommendedFive, setRecommendedFive] = useState([])
 
+    // Fetch data from api
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const apiData = await fetch("https://videostar.dacoder.io/")
+                const jsonData = await apiData.json()
+                setData(jsonData)
+                console.log(jsonData)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        loadData()
+    }, [])
+
+    // Get all recommended videos
+    const recommendedVideos = () => {
+        let da = data.filter(video => video.isFree === false)
+        console.log("da: " + da)
+        return da
+        // return data.filter(video => video.isFree === false)
+    }
+
+    // On mount, set reecommendedFive state to have five recommended 
+    // videos (or however many up to that point are available)
+    useEffect(() => {
+        const recommended = recommendedVideos()
+        console.log("useeffect rec: " + recommended)
+        setRecommendedFive(recommended.length >= 5 ? recommended.slice(0, 5) : recommended)
+    }, [data])
+
+    //pass handler functions to components, not state values themselves
     return (
         <div className="App">
             <header>
@@ -16,7 +51,8 @@ function App() {
             </header>
             <main>
                 <h1 className="browse">Browse</h1>
-                <Recommended />
+                {console.log("--------" + recommendedFive)}
+                <Recommended videos={recommendedFive} />
                 <section className="gallery">
                     <div className="galleryHeadContainer">
                         <h2 className="galleryHeader">Movies We Think You'll Like</h2>
@@ -27,7 +63,16 @@ function App() {
                         </select>
                     </div>
                     <div className="galleryMain">
-                        {[...Array(16)].map(_ => <VideoPaid />)}
+                        {recommendedFive.map(video => <VideoPaid
+                            id={video.id}
+                            name={video.name}
+                            isPurchased={video.isPurchased}
+                            duration={video.duration}
+                            size={video.size}
+                            price={video.price}
+                            url={video.url}
+                        />)
+                        }
                     </div>
                 </section>
             </main>
@@ -52,3 +97,4 @@ export default App
 // box-shadowing and similar
 //scroll bar distance from cards recommended
 // rremove empty css rules
+// add a circular rotational image until the data loads

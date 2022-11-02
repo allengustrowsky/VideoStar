@@ -140,8 +140,8 @@ button {
 
 }
 
-/* VideoPaid */
-.videoPaidContainer {
+/* Videos (paid and free) */
+.videoContainer {
     width: 355px;
     height: 271px;
     background-color: var(--tan);
@@ -149,16 +149,14 @@ button {
     position: relative;
 }
 
-.thumbnail {
-    width: 100%;
+.video {
+    width: 355px;
     height: 200px;
     border-radius: var(--main-border-radius) var(--main-border-radius) 0 0;
 }
 
-.video {
-    width: 355px;
-    height: 200px;
-    filter: blur(7px);
+.videoPaid {
+    filter: blue(7px);
 }
 
 .dollar {
@@ -177,25 +175,55 @@ button {
     border-radius: var(--main-border-radius);
     position: relative;
     top: -274px;
-    /* color: white; */
     fill: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    visibility: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.videoContainer:hover .hoverElement {
+    visibility: visible;
+}
+
+.hoverRow {
+    display: flex;
+    justify-content: space-between;
 }
 
 .hoverIconContainer {
-    /* margin: 10px; */
     padding: 12px;
+    pointer-events: auto;
+
+}
+
+.paidHoverIconCont {
     width: max-content;
     margin-left: auto;
 }
 
 .hoverIcon {
-    /* background-color: red; */
     width: 32px;
     height: 32px;
+    z-index: 10;
+}
+
+.hoverIcon:hover {
+    cursor: pointer;
 }
 
 .hoverIconContainer:hover {
     cursor: pointer;
+    /* pointer-events: auto; */
+}
+
+.duration {
+    color: var(--dark-green);
+    height: max-content;
+    padding: 12px;
+    margin: 0;
 }
 
 
@@ -208,7 +236,7 @@ button {
     color: var(--dark);
 }
 
-.videoTitlePaid {
+.videoTitle {
     margin: 0;
     padding: 0;
     height: 100%;

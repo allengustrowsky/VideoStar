@@ -60,7 +60,7 @@ function App() {
                         </select>
                     </div>
                     <div className="galleryMain">
-                        {recommendedFive.map(video => <VideoPaid
+                        {recommendedFive.map(video => <VideoFree
                             key={video.id}
                             name={video.name}
                             isPurchased={video.isPurchased}

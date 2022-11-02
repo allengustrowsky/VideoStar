@@ -1,21 +1,45 @@
-import dollar from "../assets/dollar.svg"
+import heart from "../assets/heart.svg"
+import heartFill from "../assets/heartFill.svg"
+import monitor from "../assets/monitor.svg"
 
 const VideoFree = (props) => {
     const { key, name, isPurchased, duration, size, price, url } = props
+
+    const handleMouseEnter = (event) => {
+        event.target.controls = true
+        console.log('in')
+    }
+
+    const handleMouseLeave = (event) => {
+        event.target.controls = false
+        console.log('out')
+    }
     
     return (
-        <div className="videoPaidContainer" >
-            <video type="video/mp4" crossOrigin="true" style={{width: "355px", height: "200px"}}>
+        <div className="videoContainer" >
+            <video className="video videoFree" 
+                type="video/mp4" 
+                crossOrigin="true" 
+                onMouseEnter={handleMouseEnter} 
+                onMouseLeave={handleMouseLeave}>
                 <source src={url}/>
             </video>
-            
+
             <div className="videoInfo">
-                <h3 className="videoTitlePaid">{name}</h3>
+                <h3 className="videoTitle">{name}</h3>
                 <p className="videoPrice">${price}</p>
             </div>
-            <img className="dollar" src={dollar}/>
 
-
+            <div className="hoverElement">
+                <div className="hoverRow">
+                    <div className="hoverIconContainer">
+                        <img className="cart hoverIcon" src={heart} alt="click to add to cart" />
+                    </div>
+                    <div className="hoverIconContainer">
+                        <img className="monitor hoverIcon" src={monitor} alt="click to view in theater mode" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

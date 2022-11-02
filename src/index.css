@@ -75,6 +75,46 @@ button {
 }
 
 
+/* Theater View */
+.theaterContainer {
+    width: 100%;
+    background-color: #2a2a2a;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 15;
+}
+
+.exit {
+    width: 45px;
+    height: 45px;
+    display: block;
+    /* background-color: yellow; */
+    padding: 0.45rem;
+    margin-left: auto;
+    fill: var(--tan);
+}
+
+.exit:hover {
+    cursor: pointer;
+}
+
+.theaterVideo {
+    height: 55vh;
+}
+
+.theaterTitle {
+    color: var(--tan);
+    font-size: 1.7rem;
+    font-weight: var(--main-font-weight);
+    padding: 0.7rem 0;
+}
+
+
 /* Main Page */
 .browse {
     height: 150px;
@@ -238,11 +278,14 @@ button {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 64px;
-    padding: 0;
-    margin: 0;
+    height: 4rem;
     width: 100%;
     color: var(--dark);
+}
+
+.videoInfoFree {
+    justify-content: left;
+    padding: 0.45rem;
 }
 
 .videoTitle {

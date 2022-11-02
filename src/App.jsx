@@ -3,20 +3,22 @@ import { useEffect } from 'react'
 import './App.css'
 import VideoFree from './components/VideoFree'
 import VideoPaid from './components/VideoPaid'
-import CartWindow from './components/CardWindow'
-import TheaterWindow from './components/TheaterWindow'
+import CartWindow from './components/CartWindow'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
+import Theater from './components/Theater'
 
 function App() {
     const [data, setData] = useState([])
-    
+    const [theater, setTheater] = useState([])
+
     // Fetch data from api
     useEffect(() => {
         const loadData = async () => {
             try {
                 const apiData = await fetch("https://videostar.dacoder.io/")
                 const jsonData = await apiData.json()
+                // console.log(jsonData)
                 setData(jsonData)
             } catch (error) {
                 console.log(error)
@@ -32,6 +34,7 @@ function App() {
                 <Hero />
             </header>
             <main>
+                {theater.length > 0 && <Theater theater={theater} setTheater={setTheater} />}
                 <h1 className="browse">Browse</h1>
                 <Recommended 
                     videos={data}
@@ -50,18 +53,19 @@ function App() {
                     <div className="galleryMain">
                         {data.map(video => {
                                 const videoData={
-                                    "key": video.id,
+                                    "id": video.id,
                                     "name": video.name,
                                     "isPurchased": video.isPurchased,
                                     "duration": video.duration,
                                     "size": video.size,
                                     "price": video.price,
                                     "url": video.url,
+                                    "setTheater": setTheater
                                 }
                             if (video.isFree) {
-                                return <VideoFree info={videoData} />
+                                return <VideoFree key={video.id} info={videoData} />
                             } else {
-                                return <VideoPaid info={videoData} />
+                                return <VideoPaid key={video.id} info={videoData} />
                             }
                         })}
                     </div>
@@ -89,3 +93,5 @@ export default App
 //scroll bar distance from cards recommended
 // rremove empty css rules
 // add a circular rotational image until the data loads
+// replace px with rem in some places?
+//add a readme.md

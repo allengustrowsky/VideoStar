@@ -34,6 +34,7 @@ const Recommended = (props) => {
             <div className="recCardContainer">
                 {recommended.map(video => <VideoPaid
                     key={video.id}
+                    id={video.id}
                     name={video.name}
                     isPurchased={video.isPurchased}
                     duration={video.duration}

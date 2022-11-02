@@ -3,16 +3,22 @@ import heartFill from "../assets/heartFill.svg"
 import monitor from "../assets/monitor.svg"
 
 const VideoFree = (props) => {
-    const { key, name, isPurchased, duration, size, price, url } = props.info ? props.info : props
+    const { id, name, isPurchased, duration, size, price, url, setTheater } = props.info ? props.info : props
 
     const handleMouseEnter = (event) => {
         event.target.controls = true
-        console.log('in')
     }
 
     const handleMouseLeave = (event) => {
         event.target.controls = false
-        console.log('out')
+    }
+
+    const handleClickTheater = () => {
+        setTheater([{
+            "id": id,
+            "name": name,
+            "url": url,
+        }])
     }
     
     return (
@@ -25,9 +31,9 @@ const VideoFree = (props) => {
                 <source src={url}/>
             </video>
 
-            <div className="videoInfo">
+            <div className="videoInfo videoInfoFree">
                 <h3 className="videoTitle">{name}</h3>
-                <p className="videoPrice">${price}</p>
+                {/* <p className="videoPrice">${price}</p> */}
             </div>
 
             <div className="hoverElement">
@@ -36,7 +42,7 @@ const VideoFree = (props) => {
                         <img className="cart hoverIcon" src={heart} alt="click to add to cart" />
                     </div>
                     <div className="hoverIconContainer">
-                        <img className="monitor hoverIcon" src={monitor} alt="click to view in theater mode" />
+                        <img className="monitor hoverIcon" onClick={handleClickTheater} src={monitor} alt="click to view in theater mode" />
                     </div>
                 </div>
             </div>

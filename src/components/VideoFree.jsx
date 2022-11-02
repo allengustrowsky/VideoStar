@@ -3,7 +3,7 @@ import heartFill from "../assets/heartFill.svg"
 import monitor from "../assets/monitor.svg"
 
 const VideoFree = (props) => {
-    const { key, name, isPurchased, duration, size, price, url } = props
+    const { key, name, isPurchased, duration, size, price, url } = props.info ? props.info : props
 
     const handleMouseEnter = (event) => {
         event.target.controls = true

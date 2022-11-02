@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import VideoFree from './components/VideoFree'
 import VideoPaid from './components/VideoPaid'
@@ -6,12 +7,10 @@ import CartWindow from './components/CardWindow'
 import TheaterWindow from './components/TheaterWindow'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
-import { useEffect } from 'react'
 
 function App() {
     const [data, setData] = useState([])
-    const [recommendedFive, setRecommendedFive] = useState([])
-
+    
     // Fetch data from api
     useEffect(() => {
         const loadData = async () => {
@@ -19,26 +18,12 @@ function App() {
                 const apiData = await fetch("https://videostar.dacoder.io/")
                 const jsonData = await apiData.json()
                 setData(jsonData)
-                console.log(jsonData)
             } catch (error) {
                 console.log(error)
             }
         }
         loadData()
     }, [])
-
-    // Get all recommended videos
-    const recommendedVideos = () => {
-        return data.filter(video => video.isFree === false)
-    }
-
-    // On mount, set reecommendedFive state to have five recommended 
-    // videos (or however many up to that point are available)
-    useEffect(() => {
-        const recommended = recommendedVideos()
-        console.log("useeffect rec: " + recommended)
-        setRecommendedFive(recommended.length >= 5 ? recommended.slice(0, 5) : recommended)
-    }, [data])
 
     //pass handler functions to components, not state values themselves
     return (
@@ -48,8 +33,11 @@ function App() {
             </header>
             <main>
                 <h1 className="browse">Browse</h1>
-                {console.log("--------" + recommendedFive)}
-                <Recommended videos={recommendedFive} />
+                <Recommended 
+                    videos={data}
+                    // recommendedVideos={recommendedVideos}
+                    // setRecommended={setRecommended} 
+                />
                 <section className="gallery">
                     <div className="galleryHeadContainer">
                         <h2 className="galleryHeader">Movies We Think You'll Like</h2>
@@ -60,16 +48,22 @@ function App() {
                         </select>
                     </div>
                     <div className="galleryMain">
-                        {recommendedFive.map(video => <VideoFree
-                            key={video.id}
-                            name={video.name}
-                            isPurchased={video.isPurchased}
-                            duration={video.duration}
-                            size={video.size}
-                            price={video.price}
-                            url={video.url}
-                        />)
-                        }
+                        {data.map(video => {
+                                const videoData={
+                                    "key": video.id,
+                                    "name": video.name,
+                                    "isPurchased": video.isPurchased,
+                                    "duration": video.duration,
+                                    "size": video.size,
+                                    "price": video.price,
+                                    "url": video.url,
+                                }
+                            if (video.isFree) {
+                                return <VideoFree info={videoData} />
+                            } else {
+                                return <VideoPaid info={videoData} />
+                            }
+                        })}
                     </div>
                 </section>
             </main>

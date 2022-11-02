@@ -135,8 +135,10 @@ button {
     justify-content: left;
     align-items: center;
     gap: 70px;
+    padding: 20px 20px;
+    margin-bottom: 28px;
     overflow: scroll;
-    padding: 0 20px;
+    overflow-y: hidden;
 
 }
 
@@ -147,6 +149,8 @@ button {
     background-color: var(--tan);
     border-radius: var(--main-border-radius);
     position: relative;
+    /* margin: 0; */
+    /* padding: 0; */
 }
 
 .video {
@@ -156,7 +160,7 @@ button {
 }
 
 .videoPaid {
-    filter: blue(7px);
+    filter: blur(7px);
 }
 
 .dollar {
@@ -166,6 +170,7 @@ button {
     top: 30px;
     left: 120px;
     /* color: white; */
+    /* margin: 0; */
 }
 
 .hoverElement {
@@ -182,6 +187,7 @@ button {
     visibility: hidden;
     z-index: 1;
     pointer-events: none;
+    /* margin: 0; */
 }
 
 .videoContainer:hover .hoverElement {
@@ -217,6 +223,7 @@ button {
 .hoverIconContainer:hover {
     cursor: pointer;
     /* pointer-events: auto; */
+    /* margin: 0; */
 }
 
 .duration {
@@ -229,9 +236,11 @@ button {
 
 .videoInfo {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    height: 68px;
+    height: 64px;
+    padding: 0;
+    margin: 0;
     width: 100%;
     color: var(--dark);
 }
@@ -251,7 +260,7 @@ button {
 
 .videoPrice {
     margin: 0;
-    padding: 0 0 0 2px;
+    padding-left: 7px;
     height: 75%;
     display: flex;
     align-items: center;

@@ -2,7 +2,7 @@ import dollar from "../assets/dollar.svg"
 import cart from "../assets/cart.svg"
 
 const VideoPaid = (props) => {
-    const { key, name, isPurchased, duration, size, price, url } = props
+    const { key, name, isPurchased, duration, size, price, url } = props.info ? props.info : props
     
     return (
         <div className="videoContainer" >

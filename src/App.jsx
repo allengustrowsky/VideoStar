@@ -3,14 +3,17 @@ import { useEffect } from 'react'
 import './App.css'
 import VideoFree from './components/VideoFree'
 import VideoPaid from './components/VideoPaid'
-import CartWindow from './components/CartWindow'
+import Cart from './components/Cart'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
 import Theater from './components/Theater'
 
+
 function App() {
     const [data, setData] = useState([])
     const [theater, setTheater] = useState([])
+    const [cartItems, setCartItems] = useState([])
+    const [showCart, setShowCart] = useState(true)
 
     // Fetch data from api
     useEffect(() => {
@@ -18,7 +21,6 @@ function App() {
             try {
                 const apiData = await fetch("https://videostar.dacoder.io/")
                 const jsonData = await apiData.json()
-                // console.log(jsonData)
                 setData(jsonData)
             } catch (error) {
                 console.log(error)
@@ -29,15 +31,20 @@ function App() {
 
     //pass handler functions to components, not state values themselves
     return (
-        <div className="App">
+        <div className="App" style={{
+                // disable normal page pointer events when in theater mode
+                "pointerEvents": theater.length > 0 && "none",
+            }}>
             <header>
                 <Hero />
             </header>
             <main>
+                {showCart && <Cart setShowCart={setShowCart} cartItems={cartItems}/>}
                 {theater.length > 0 && <Theater theater={theater} setTheater={setTheater} />}
                 <h1 className="browse">Browse</h1>
                 <Recommended 
                     videos={data}
+                    setCartItems={setCartItems}
                     // recommendedVideos={recommendedVideos}
                     // setRecommended={setRecommended} 
                 />
@@ -62,10 +69,10 @@ function App() {
                                     "url": video.url,
                                     "setTheater": setTheater
                                 }
-                            if (video.isFree) {
+                            if (video.isFree || video.isPurchased) {
                                 return <VideoFree key={video.id} info={videoData} />
                             } else {
-                                return <VideoPaid key={video.id} info={videoData} />
+                                return <VideoPaid key={video.id} info={{...videoData, setCartItems: setCartItems}} />
                             }
                         })}
                     </div>
@@ -95,3 +102,6 @@ export default App
 // add a circular rotational image until the data loads
 // replace px with rem in some places?
 //add a readme.md
+// add border radius to theater view
+// pu tin the while-loading spinner
+//prevent duplicate entry into cart

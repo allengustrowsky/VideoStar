@@ -1,9 +1,9 @@
-import HeroImg from "../assets/heroBackground2.jpg"
+import heroImg from "../assets/heroBackground2.jpg"
 
 const Hero = (props) => {
     return (
         <div className="heroContainer">
-            <img className="heroImg" src={HeroImg} alt="Movie scene"/>
+            <img className="heroImg" src={heroImg} alt="Movie scene"/>
         </div>
     )
 }

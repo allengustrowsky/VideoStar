@@ -2,7 +2,21 @@ import dollar from "../assets/dollar.svg"
 import cart from "../assets/cart.svg"
 
 const VideoPaid = (props) => {
-    const { id, name, isPurchased, duration, size, price, url, } = props.info ? props.info : props
+    const { id, name, isPurchased, duration, size, price, url, setCartItems } = props.info ? props.info : props
+
+    const handleClick = () => {
+        setCartItems(prevItems => {
+            return [
+                ...prevItems,
+                {
+                    id: id,
+                    name: name,
+                    url: url,
+                    price: price,
+                }
+            ]
+        })
+    }
     
     return (
         <div className="videoContainer" >
@@ -17,7 +31,7 @@ const VideoPaid = (props) => {
             <img className="dollar" src={dollar}/>
             <div className="hoverElement">
                 <div className="paidHoverIconCont hoverIconContainer">
-                    <img className="cart hoverIcon" src={cart} alt="click to add to cart" />
+                    <img className="cart hoverIcon" src={cart} alt="click to add to cart" onClick={handleClick} />
                 </div>
             </div>
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import VideoPaid from "./VideoPaid"
 
 const Recommended = (props) => {
-    const { videos } = props
+    const { videos, setCartItems } = props
     const [recommended, setRecommended] = useState([])
 
     // Get all recommended videos
@@ -41,6 +41,7 @@ const Recommended = (props) => {
                     size={video.size}
                     price={video.price}
                     url={video.url}
+                    setCartItems={setCartItems}
                 />)}
             </div>
         </section>

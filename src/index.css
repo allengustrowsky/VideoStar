@@ -10,6 +10,8 @@
     --dark: #2a2a2a;
 
     --main-border-radius: 13px;
+    --main-box-shadow: 0 0 20px 5px #3e3e3e;
+
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -75,7 +77,83 @@ button {
 }
 
 
-/* Theater View */
+/* Cart Modal */
+.cartContainer {
+    width: 19rem;
+    padding: 1rem;
+    height: max-content;
+    max-height: 80vh;
+    overflow: scroll;
+    /* background-color: orange; */
+    background-color: var(--blue);
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: var(--tan);
+    box-shadow: var(--main-box-shadow);
+    border-radius: var(--main-border-radius);
+    z-index: 20;
+}
+
+.cartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.cartHeader > p {
+    margin: 0;
+    padding: 0;
+    font-size: var(--sub-head-font-size);
+}
+
+#cartExitIcon {
+    width: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    fill: var(--light-green);
+}
+
+#cartExitIcon:hover {
+    cursor: pointer;
+}
+
+.cartItemsContainer {
+
+}
+
+.cartVideo {
+    width: 13rem;
+}
+
+.CVText {
+    padding: 0;
+    margin: 0.3rem;
+    line-height: 1.2rem;
+}
+
+.CVPrice {
+    margin-bottom: 0.7rem;
+}
+
+#completeOrderBtn {
+    width: 8rem;
+    height: 4rem;
+    padding: 0.5rem;
+    display: flex;
+    background-color: var(--light-green);
+}
+
+#completeOrderBtn > p {
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+
+
+
+/* Theater View Modal */
 .theaterContainer {
     width: 100%;
     background-color: #2a2a2a;
@@ -87,6 +165,7 @@ button {
     position: fixed;
     top: 0;
     z-index: 15;
+    pointer-events: auto;
 }
 
 .exit {
@@ -140,7 +219,7 @@ button {
     color: var(--tan);
 }
 
-.refreshBtn {
+/* .refreshBtn {
     width: 170px;
     height: 50px;
     margin: 0 1.5rem 0 auto;
@@ -162,7 +241,7 @@ button {
     width: 2rem;
     height: 2rem;
     fill: var(--dark);
-}
+} */
 
 .recommendedContainer hr {
     width: 100%;
@@ -189,8 +268,6 @@ button {
     background-color: var(--tan);
     border-radius: var(--main-border-radius);
     position: relative;
-    /* margin: 0; */
-    /* padding: 0; */
 }
 
 .video {
@@ -209,8 +286,6 @@ button {
     position: absolute;
     top: 30px;
     left: 120px;
-    /* color: white; */
-    /* margin: 0; */
 }
 
 .hoverElement {

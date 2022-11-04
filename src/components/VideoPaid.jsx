@@ -6,15 +6,15 @@ const VideoPaid = (props) => {
 
     const handleClick = () => {
         setCartItems(prevItems => {
-            return [
-                ...prevItems,
-                {
-                    id: id,
-                    name: name,
-                    url: url,
-                    price: price,
-                }
-            ]
+            const newCarItems = prevItems.filter(item => item.id !== id)
+            newCarItems.push({
+                id: id,
+                name: name,
+                url: url,
+                price: price,
+            })
+
+            return newCarItems
         })
     }
     

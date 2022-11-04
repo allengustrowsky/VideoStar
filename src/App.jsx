@@ -47,6 +47,7 @@ function App() {
                     videos={data}
                     setCartItems={setCartItems}
                     setData={setData}
+                    setTheater={setTheater}
                     // recommendedVideos={recommendedVideos}
                     // setRecommended={setRecommended} 
                 />
@@ -111,3 +112,4 @@ export default App
 // add border radius to theater view
 // pu tin the while-loading spinner
 // make cart button work
+// make sure when item is removed from cart that isFavorite is set to false

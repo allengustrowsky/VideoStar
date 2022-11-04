@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { useEffect } from 'react'
 import VideoPaid from "./VideoPaid"
+import VideoFree from "./VideoFree"
 
 const Recommended = (props) => {
-    const { videos, setCartItems, setData } = props
+    const { videos, setCartItems, setData, setTheater } = props
     const [recommended, setRecommended] = useState([])
 
     // Get all recommended videos
@@ -32,18 +33,39 @@ const Recommended = (props) => {
 
             <hr />
             <div className="recCardContainer">
-                {recommended.map(video => <VideoPaid
-                    key={video.id}
-                    id={video.id}
-                    name={video.name}
-                    isPurchased={video.isPurchased}
-                    duration={video.duration}
-                    size={video.size}
-                    price={video.price}
-                    url={video.url}
-                    setCartItems={setCartItems}
-                    setData={setData}
-                />)}
+                {recommended.map(video => {
+                    const videoData={
+                        "id": video.id,
+                        "name": video.name,
+                        "isPurchased": video.isPurchased,
+                        "duration": video.duration,
+                        "size": video.size,
+                        "price": video.price,
+                        "url": video.url,
+                        "setTheater": setTheater
+                    }
+                if (video.isFree || video.isPurchased) {
+                    return <VideoFree 
+                        key={video.id}
+                        info={{
+                            ...videoData,
+                            setTheater: setTheater,
+                        }}
+                    />
+                    // setTheater
+                } else {
+                    return <VideoPaid
+                        key={video.id}
+                        info={{
+                            ...videoData,
+                            setCartItems: setCartItems,
+                            setData: setData,
+                        }}
+                    />
+                    // setCartItems
+                    // setData
+                }
+})}
             </div>
         </section>
     )

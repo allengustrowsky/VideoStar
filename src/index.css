@@ -137,7 +137,7 @@ button {
 
 .cartVideo {
     width: 13rem;
-    filter: blur(7px);
+    /* filter: blur(7px); */
 
 }
 
@@ -290,9 +290,9 @@ button {
     border-radius: var(--main-border-radius) var(--main-border-radius) 0 0;
 }
 
-.videoPaid {
+/* .videoPaid {
     filter: blur(7px);
-}
+} */
 
 .dollar {
     width: 120px;

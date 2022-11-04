@@ -2,9 +2,22 @@ import trash from "../assets/trash.svg"
 
 
 const cartVideo = (props) => {
-    const { id, name, price, url, setCartItems} = props.items
+    const { id, name, price, url, setData, setCartItems} = props.items
 
     const handleClick = () => {
+        // mark this video as purchased
+        setData(prevData => prevData.map(video => {
+            if (video.id === id) {
+                return {
+                    ...video,
+                    isPurchased: false
+                }
+            } else {
+                return video
+            }
+        }))
+
+        // update which items are in cart
         setCartItems(prevItems => {
             return prevItems.filter(item => item.id !== id)
         })

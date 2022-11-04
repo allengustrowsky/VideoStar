@@ -2,9 +2,22 @@ import dollar from "../assets/dollar.svg"
 import cart from "../assets/cart.svg"
 
 const VideoPaid = (props) => {
-    const { id, name, isPurchased, duration, size, price, url, setCartItems } = props.info ? props.info : props
+    const { id, name, isPurchased, duration, size, price, url, setCartItems, setData } = props.info ? props.info : props
 
     const handleClick = () => {
+        // mark this video as purchased
+        setData(prevData => prevData.map(video => {
+            if (video.id === id) {
+                return {
+                    ...video,
+                    isPurchased: true
+                }
+            } else {
+                return video
+            }
+        }))
+
+        // update the items in the cart
         setCartItems(prevItems => {
             const newCarItems = prevItems.filter(item => item.id !== id)
             newCarItems.push({
@@ -20,7 +33,9 @@ const VideoPaid = (props) => {
     
     return (
         <div className="videoContainer" >
-            <video className="video videoPaid" type="video/mp4" crossOrigin="true">
+            <video className="video videoPaid" type="video/mp4" crossOrigin="true"
+                // style={{"filter": (!isPurchased && "blur(7px)")}}>
+                >
                 <source src={url}/>
             </video>
             <div className="videoInfo">

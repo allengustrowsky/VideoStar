@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 
 const Cart = (props) => {
-    const { setShowCart, cartItems, setCartItems } = props
+    const { setData, setShowCart, cartItems, setCartItems } = props
     const [total, setTotal ] = useState(0) 
 
     // let total = 0
@@ -31,7 +31,11 @@ const Cart = (props) => {
 
             <div className="cartItemsContainer">
                 {cartItems.map((item, index) => {
-                    return <CartVideo key={index} items={{...item, setCartItems: setCartItems}} />
+                    return <CartVideo key={index} items={{
+                        ...item, 
+                        setData: setData,
+                        setCartItems: setCartItems
+                    }} />
                 })}
             </div>
 

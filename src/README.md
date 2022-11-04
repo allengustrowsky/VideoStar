@@ -1,0 +1,1 @@
+Once purchased, a video can be treated like a normal free video (e.g. it can be favorited, viewed in theater mode, etc.)

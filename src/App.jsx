@@ -14,7 +14,7 @@ function App() {
     const [theater, setTheater] = useState([])
     const [cartItems, setCartItems] = useState([])
     const [showCart, setShowCart] = useState(true)
-    console.log("refresh")
+    console.log(data)
 
     // Fetch data from api
     useEffect(() => {
@@ -40,12 +40,13 @@ function App() {
                 <Hero />
             </header>
             <main>
-                {showCart && <Cart setShowCart={setShowCart} cartItems={cartItems} setCartItems={setCartItems} />}
+                {showCart && <Cart setData={setData} setShowCart={setShowCart} cartItems={cartItems} setCartItems={setCartItems} />}
                 {theater.length > 0 && <Theater theater={theater} setTheater={setTheater} />}
                 <h1 className="browse">Browse</h1>
                 <Recommended 
                     videos={data}
                     setCartItems={setCartItems}
+                    setData={setData}
                     // recommendedVideos={recommendedVideos}
                     // setRecommended={setRecommended} 
                 />
@@ -73,7 +74,11 @@ function App() {
                             if (video.isFree || video.isPurchased) {
                                 return <VideoFree key={video.id} info={videoData} />
                             } else {
-                                return <VideoPaid key={video.id} info={{...videoData, setCartItems: setCartItems}} />
+                                return <VideoPaid key={video.id} info={{
+                                    ...videoData, 
+                                    setCartItems: setCartItems, 
+                                    setData: setData,
+                                }} />
                             }
                         })}
                     </div>

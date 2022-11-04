@@ -38,11 +38,13 @@ const Recommended = (props) => {
                         "id": video.id,
                         "name": video.name,
                         "isPurchased": video.isPurchased,
+                        "isFavorite": video.isFavorite,
                         "duration": video.duration,
                         "size": video.size,
                         "price": video.price,
                         "url": video.url,
-                        "setTheater": setTheater
+                        "setTheater": setTheater,
+                        "setData": setData,
                     }
                 if (video.isFree || video.isPurchased) {
                     return <VideoFree 
@@ -59,7 +61,7 @@ const Recommended = (props) => {
                         info={{
                             ...videoData,
                             setCartItems: setCartItems,
-                            setData: setData,
+                            // setData: setData,
                         }}
                     />
                     // setCartItems

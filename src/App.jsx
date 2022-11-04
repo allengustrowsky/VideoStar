@@ -22,7 +22,13 @@ function App() {
             try {
                 const apiData = await fetch("https://videostar.dacoder.io/")
                 const jsonData = await apiData.json()
-                setData(jsonData)
+                const completeData = jsonData.map(video => {
+                    return {
+                        ...video,
+                        isFavorite: false,
+                    }
+                })
+                setData(completeData)
             } catch (error) {
                 console.log(error)
             }
@@ -30,7 +36,6 @@ function App() {
         loadData()
     }, [])
 
-    //pass handler functions to components, not state values themselves
     return (
         <div className="App" style={{
                 // disable normal page pointer events when in theater mode
@@ -66,11 +71,13 @@ function App() {
                                     "id": video.id,
                                     "name": video.name,
                                     "isPurchased": video.isPurchased,
+                                    "isFavorite": video.isFavorite,
                                     "duration": video.duration,
                                     "size": video.size,
                                     "price": video.price,
                                     "url": video.url,
-                                    "setTheater": setTheater
+                                    "setTheater": setTheater,
+                                    "setData": setData,
                                 }
                             if (video.isFree || video.isPurchased) {
                                 return <VideoFree key={video.id} info={videoData} />
@@ -78,7 +85,7 @@ function App() {
                                 return <VideoPaid key={video.id} info={{
                                     ...videoData, 
                                     setCartItems: setCartItems, 
-                                    setData: setData,
+                                    // setData: setData,
                                 }} />
                             }
                         })}
@@ -113,3 +120,4 @@ export default App
 // pu tin the while-loading spinner
 // make cart button work
 // make sure when item is removed from cart that isFavorite is set to false
+// responsive design

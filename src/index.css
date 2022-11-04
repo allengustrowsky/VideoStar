@@ -290,10 +290,6 @@ button {
     border-radius: var(--main-border-radius) var(--main-border-radius) 0 0;
 }
 
-/* .videoPaid {
-    filter: blur(7px);
-} */
-
 .dollar {
     width: 120px;
     height: 140px;

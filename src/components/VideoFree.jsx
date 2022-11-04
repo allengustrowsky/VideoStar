@@ -3,7 +3,7 @@ import heartFill from "../assets/heartFill.svg"
 import monitor from "../assets/monitor.svg"
 
 const VideoFree = (props) => {
-    const { id, name, isPurchased, duration, size, price, url, setTheater } = props.info ? props.info : props
+    const { id, name, isPurchased, isFavorite, duration, size, price, url, setTheater, setData } = props.info ? props.info : props
 
     const handleMouseEnter = (event) => {
         event.target.controls = true
@@ -19,6 +19,20 @@ const VideoFree = (props) => {
             "name": name,
             "url": url,
         }])
+    }
+
+    const handleClickFavorite = () => {
+        // mark this video as favorited
+        setData(prevData => prevData.map(video => {
+            if (video.id === id) {
+                return {
+                    ...video,
+                    isFavorite: !video.isFavorite
+                }
+            } else {
+                return video
+            }
+        }))
     }
     
     return (
@@ -39,10 +53,17 @@ const VideoFree = (props) => {
             <div className="hoverElement">
                 <div className="hoverRow">
                     <div className="hoverIconContainer">
-                        <img className="cart hoverIcon" src={heart} alt="click to add to cart" />
+                        <img className="cart hoverIcon" 
+                            src={isFavorite ? heartFill : heart} 
+                            alt="click to toggle favorite status" 
+                            onClick={handleClickFavorite}
+                        />
                     </div>
                     <div className="hoverIconContainer">
-                        <img className="monitor hoverIcon" onClick={handleClickTheater} src={monitor} alt="click to view in theater mode" />
+                        <img className="monitor hoverIcon"
+                            onClick={handleClickTheater} 
+                            src={monitor} 
+                            alt="click to view in theater mode" />
                     </div>
                 </div>
             </div>

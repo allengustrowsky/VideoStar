@@ -110,4 +110,4 @@ export default App
 //add a readme.md
 // add border radius to theater view
 // pu tin the while-loading spinner
-//prevent duplicate entry into cart
+// make cart button work

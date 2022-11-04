@@ -33,9 +33,12 @@ const VideoPaid = (props) => {
     
     return (
         <div className="videoContainer" >
-            <video className="video videoPaid" type="video/mp4" crossOrigin="true"
-                // style={{"filter": (!isPurchased && "blur(7px)")}}>
-                >
+            <video 
+                className="video videoPaid" 
+                type="video/mp4" 
+                crossOrigin="true"
+                style={{"filter": (!isPurchased && "blur(7px)")}}
+            >
                 <source src={url}/>
             </video>
             <div className="videoInfo">

@@ -7,6 +7,8 @@ import Cart from './components/Cart'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
 import Theater from './components/Theater'
+import FilterComponent from './components/FilterComponent'
+import Gallery from './components/Gallery'
 
 
 function App() {
@@ -14,6 +16,16 @@ function App() {
     const [theater, setTheater] = useState([])
     const [cartItems, setCartItems] = useState([])
     const [showCart, setShowCart] = useState(true)
+    const [filterData, setFilterData] = useState({
+        "title": "",
+        "minLength": 0,
+        "maxLength": 255,
+        "free": false,
+        "paid": false,
+        "favorite": false,
+        "purchased": false,
+    })
+    const [showFilter, setShowFilter] = useState(false)
     console.log(data)
 
     // Fetch data from api
@@ -53,42 +65,23 @@ function App() {
                     setCartItems={setCartItems}
                     setData={setData}
                     setTheater={setTheater}
-                    // recommendedVideos={recommendedVideos}
-                    // setRecommended={setRecommended} 
                 />
                 <section className="gallery">
                     <div className="galleryHeadContainer">
                         <h2 className="galleryHeader">Movies We Think You'll Like</h2>
-                        <select name="filterBtn" id="filterBtn">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
+                        
                     </div>
                     <div className="galleryMain">
-                        {data.map(video => {
-                                const videoData={
-                                    "id": video.id,
-                                    "name": video.name,
-                                    "isPurchased": video.isPurchased,
-                                    "isFavorite": video.isFavorite,
-                                    "duration": video.duration,
-                                    "size": video.size,
-                                    "price": video.price,
-                                    "url": video.url,
-                                    "setTheater": setTheater,
-                                    "setData": setData,
-                                }
-                            if (video.isFree || video.isPurchased) {
-                                return <VideoFree key={video.id} info={videoData} />
-                            } else {
-                                return <VideoPaid key={video.id} info={{
-                                    ...videoData, 
-                                    setCartItems: setCartItems, 
-                                    // setData: setData,
-                                }} />
-                            }
-                        })}
+                        <Gallery 
+                            data={data} 
+                            setData={setData} 
+                            setTheater={setTheater} 
+                            setCartItems={setCartItems} 
+                            filterData={filterData} 
+                            setFilterData={setFilterData}
+                            showFilter={showFilter}
+                            setShowFilter={setShowFilter}
+                        />
                     </div>
                 </section>
             </main>
@@ -121,3 +114,4 @@ export default App
 // make cart button work
 // make sure when item is removed from cart that isFavorite is set to false
 // responsive design
+// code formatting - putting long lines on multiple lines

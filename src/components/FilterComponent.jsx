@@ -1,0 +1,46 @@
+import exit from "../assets/exit.svg"
+
+const FilterComponent = (props) => {
+    const { filterData, setFilterData, setShowFilter } = props
+
+    const handleClick = () => {
+        setShowFilter(false)
+    }
+
+    const handleChange = (event) => {
+        const { id, type, value, checked } = event.target
+
+        setFilterData(prevFilterData => {
+            return {
+                ...prevFilterData,
+                [id]: type === "checkbox" ? checked : value,
+            }
+        })
+    }
+
+    return (
+        <div className="filterContainer">
+            <input type="text" value={filterData.title} id="title" placeholder="Title...." onChange={handleChange} />
+            <input type="number" id="minLength" value={filterData.minLength} min="0" max="255" onChange={handleChange} />
+            <input type="number" id="maxLength" value={filterData.maxLength} min="0" max="255" onChange={handleChange} />
+
+            <input type="checkbox" id="free" onChange={handleChange} checked={filterData["free"]} />
+            <label htmlFor="free">Free</label>
+
+            <input type="checkbox" id="paid" onChange={handleChange} checked={filterData["paid"]} />
+            <label htmlFor="paid">Paid</label>
+
+            <input type="checkbox" id="favorite" onChange={handleChange} checked={filterData["favorite"]} />
+            <label htmlFor="favorite">Favorite</label>
+
+            <input type="checkbox" id="purchased" onChange={handleChange} checked={filterData["purchased"]} />
+            <label htmlFor="purchased">Purchased</label>
+            
+            <img className="exitFilterIcon" src={exit} alt="click to hide filter options" onClick={handleClick} />
+
+        </div>
+        
+    )
+}
+
+export default FilterComponent

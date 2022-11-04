@@ -408,6 +408,8 @@ button {
 .galleryHeadContainer {
     height: 140px;
     background-color: var(--dark-green);
+    /* background-color: orange; */
+
 }
 
 .galleryHeader {
@@ -420,10 +422,21 @@ button {
     font-weight: var(--main-font-weight);
 }
 
-.filterBtn {
-    width: 100px;
-    height: 50px;
-    background-color: var(--dark-green);
+.filterContainer {
+    padding: 2rem;
+    border: 2px solid black;
+}
+
+.exitFilterIcon {
+    padding: 0.5rem;
+    width: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    fill: var(--light-green);
+}
+
+.exitFilterIcon:hover {
+    cursor: pointer;
 }
 
 .galleryMain {
@@ -436,6 +449,7 @@ button {
     width: calc(100% - 100px);
     margin: 0 auto;
     background-color: var(--blue);
+    /* background-color: red; */
 }
 
 

@@ -3,7 +3,7 @@ import rightArrow from "../assets/arrow.svg"
 import CartVideo from "../components/CartVideo"
 
 const Cart = (props) => {
-    const { setShowCart, cartItems } = props
+    const { setShowCart, cartItems, setCartItems } = props
 
     const sum = 0 // use reduce here
 
@@ -22,7 +22,7 @@ const Cart = (props) => {
 
             <div className="cartItemsContainer">
                 {cartItems.map((item, index) => {
-                    return <CartVideo key={index} items={item}/>
+                    return <CartVideo key={index} items={{...item, setCartItems: setCartItems}} />
                 })}
             </div>
 
@@ -30,10 +30,10 @@ const Cart = (props) => {
 
             <hr />
 
-            <button id="completeOrderBtn">
+            {cartItems.length > 0 && (<button id="completeOrderBtn">
                 <p>Complete Order</p>
                 <img id="rightArrow" src={rightArrow} alt="right arrow" />
-            </button>
+            </button>)}
         </div>
     )
 }

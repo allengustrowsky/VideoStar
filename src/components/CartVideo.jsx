@@ -1,20 +1,32 @@
-import { useState } from "react"
+import trash from "../assets/trash.svg"
 
 
 const cartVideo = (props) => {
-    const { name, price, url, id} = props.items
-    console.log('url: ' + url)
+    const { id, name, price, url, setCartItems} = props.items
+
+    const handleClick = () => {
+        setCartItems(prevItems => {
+            return prevItems.filter(item => item.id !== id)
+        })
+    }
 
     return (
-        <div className="cartVideo">
-            <video className="cartVideo" type="video/mp4" crossOrigin="true">
-                <source src={url} />
-            </video>
-            <div className="CVTextContainer">
-                <p className="CVText">{name}</p>
-                <p className="VCPrice">${price}</p>
-            </div>
-        </div>
+        <>
+            {/* <div className="cartVideoMain"> */}
+                <div className="videoTrashContainer">
+                    <video className="cartVideo" type="video/mp4" crossOrigin="true">
+                        <source src={url} />
+                    </video>
+                    <img className="trashIcon" src={trash} alt="remove from cart" onClick={handleClick} />
+                </div>
+
+                <div className="CVTextContainer">
+                    <p className="CVText">{name}</p>
+                    <p className="VCPrice">${price}</p>
+                </div>
+            {/* </div> */}
+        </>
+
     )
 }
 

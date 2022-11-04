@@ -119,12 +119,26 @@ button {
     cursor: pointer;
 }
 
-.cartItemsContainer {
+.videoTrashContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.trashIcon {
+    width: 1.9rem;
+    padding: 0.2rem;
+    margin-right: 0.5rem;
+}
+
+.trashIcon:hover {
+    cursor: pointer;
 }
 
 .cartVideo {
     width: 13rem;
+    filter: blur(7px);
+
 }
 
 .CVText {

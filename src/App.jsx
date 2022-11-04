@@ -14,6 +14,7 @@ function App() {
     const [theater, setTheater] = useState([])
     const [cartItems, setCartItems] = useState([])
     const [showCart, setShowCart] = useState(true)
+    console.log("refresh")
 
     // Fetch data from api
     useEffect(() => {
@@ -39,7 +40,7 @@ function App() {
                 <Hero />
             </header>
             <main>
-                {showCart && <Cart setShowCart={setShowCart} cartItems={cartItems}/>}
+                {showCart && <Cart setShowCart={setShowCart} cartItems={cartItems} setCartItems={setCartItems} />}
                 {theater.length > 0 && <Theater theater={theater} setTheater={setTheater} />}
                 <h1 className="browse">Browse</h1>
                 <Recommended 

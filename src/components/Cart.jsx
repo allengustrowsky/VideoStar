@@ -1,11 +1,20 @@
 import exit from "../assets/exit.svg"
 import rightArrow from "../assets/arrow.svg"
 import CartVideo from "../components/CartVideo"
+import { useEffect, useState } from "react"
+
 
 const Cart = (props) => {
     const { setShowCart, cartItems, setCartItems } = props
+    const [total, setTotal ] = useState(0) 
 
-    const sum = 0 // use reduce here
+    // let total = 0
+    useEffect(() => {
+        setTotal(cartItems.reduce((tot, curr) => {
+            return tot + curr.price
+        }, 0))
+        // return total
+    })
 
     const handleClick = () => {
         setShowCart(false)
@@ -26,7 +35,7 @@ const Cart = (props) => {
                 })}
             </div>
 
-            <p className="total">Total: ${sum}</p>
+            <p className="total">Total: ${total}</p>
 
             <hr />
 

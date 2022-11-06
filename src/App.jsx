@@ -19,14 +19,13 @@ function App() {
     const [filterData, setFilterData] = useState({
         "title": "",
         "minLength": 0,
-        "maxLength": 255,
+        "maxLength": 60,
         "free": false,
         "paid": false,
         "favorite": false,
         "purchased": false,
     })
     const [showFilter, setShowFilter] = useState(false)
-    console.log(data)
 
     // Fetch data from api
     useEffect(() => {
@@ -38,6 +37,7 @@ function App() {
                     return {
                         ...video,
                         isFavorite: false,
+                        isPurchased: false,
                     }
                 })
                 setData(completeData)
@@ -115,3 +115,4 @@ export default App
 // make sure when item is removed from cart that isFavorite is set to false
 // responsive design
 // code formatting - putting long lines on multiple lines
+// x-ing out shoudl reset filtering ot default options

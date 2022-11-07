@@ -56,15 +56,33 @@ button {
 
 /* Hero Banner */
 .heroContainer {
-    height: 600px;
+    height: 40rem;
     width: 100%;
     background-color: var(--blue);
+    padding-bottom: 3rem;
+}
+
+.heroFiller {
+    height: 3rem;
+}
+
+.showCartIcon {
+    height: 3rem;
+    width: 3rem;
+    padding: 0.5rem;
+    margin-left: auto;
+    display: block;
+}
+
+.showCartIcon:hover {
+    cursor: pointer;
 }
 
 .heroImg {
     display: inline-block;
     width: 100%;
     height: 100%;
+    /* margin-top: 3rem; */
     -webkit-mask-image: url("../src/assets/HeroTextMask2.png");
     mask-image: url("../src/assets/HeroTextMask2.png");
     -webkit-mask-size: 120%;

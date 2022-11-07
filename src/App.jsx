@@ -41,11 +41,11 @@ function App() {
 
     return (
         <div className="App" style={{
-                // disable normal page pointer events when in theater mode
+                // Disable normal page pointer events when in theater mode
                 "pointerEvents": theater.length > 0 && "none",
             }}>
             <header>
-                <Hero />
+                <Hero showCart={showCart} setShowCart={setShowCart} />
             </header>
             <main>
                 {showCart && <Cart setData={setData} setShowCart={setShowCart} cartItems={cartItems} setCartItems={setCartItems} />}

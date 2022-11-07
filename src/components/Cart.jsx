@@ -8,12 +8,10 @@ const Cart = (props) => {
     const { setData, setShowCart, cartItems, setCartItems } = props
     const [total, setTotal ] = useState(0) 
 
-    // let total = 0
     useEffect(() => {
         setTotal(cartItems.reduce((tot, curr) => {
             return tot + curr.price
         }, 0))
-        // return total
     })
 
     const handleClick = () => {

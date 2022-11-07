@@ -2,9 +2,10 @@ import { useState } from "react"
 import { useEffect } from 'react'
 import VideoPaid from "./VideoPaid"
 import VideoFree from "./VideoFree"
+import spinner from "../assets/spinner.svg"
 
 const Recommended = (props) => {
-    const { videos, setCartItems, setData, setTheater } = props
+    const { videos, setCartItems, setData, setTheater, isLoading, setIsLoading } = props
     const [recommended, setRecommended] = useState([])
 
     // Get all recommended videos
@@ -33,41 +34,41 @@ const Recommended = (props) => {
 
             <hr />
             <div className="recCardContainer">
-                {recommended.map(video => {
-                    const videoData={
-                        "id": video.id,
-                        "name": video.name,
-                        "isPurchased": video.isPurchased,
-                        "isFavorite": video.isFavorite,
-                        "duration": video.duration,
-                        "size": video.size,
-                        "price": video.price,
-                        "url": video.url,
-                        "setTheater": setTheater,
-                        "setData": setData,
-                    }
-                if (video.isFree || video.isPurchased) {
-                    return <VideoFree 
-                        key={video.id}
-                        info={{
-                            ...videoData,
-                            setTheater: setTheater,
-                        }}
-                    />
-                    // setTheater
-                } else {
-                    return <VideoPaid
-                        key={video.id}
-                        info={{
-                            ...videoData,
-                            setCartItems: setCartItems,
-                            // setData: setData,
-                        }}
-                    />
-                    // setCartItems
-                    // setData
-                }
-})}
+                {isLoading ?
+                    // Load spinner if videos are still loading
+                    <img className="spinner" src={spinner} alt="page loading" /> :
+
+                    recommended.map(video => {
+                        const videoData = {
+                            "id": video.id,
+                            "name": video.name,
+                            "isPurchased": video.isPurchased,
+                            "isFavorite": video.isFavorite,
+                            "duration": video.duration,
+                            "size": video.size,
+                            "price": video.price,
+                            "url": video.url,
+                            "setTheater": setTheater,
+                            "setData": setData,
+                        }
+                        if (video.isFree || video.isPurchased) {
+                            return <VideoFree
+                                key={video.id}
+                                info={{
+                                    ...videoData,
+                                    setTheater: setTheater,
+                                }}
+                            />
+                        } else {
+                            return <VideoPaid
+                                key={video.id}
+                                info={{
+                                    ...videoData,
+                                    setCartItems: setCartItems,
+                                }}
+                            />
+                        }
+                    })}
             </div>
         </section>
     )

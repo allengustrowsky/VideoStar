@@ -25,6 +25,10 @@
     100% {object-position: 40px 80px;}
 }
 
+@keyframes spinner {
+    to {transform: rotate(360deg)}
+}
+
 /* GLOBAL RESET */
 html, body, main, h1 {
     margin: 0;
@@ -60,6 +64,9 @@ button {
     width: 100%;
     background-color: var(--blue);
     padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .heroFiller {
@@ -82,7 +89,7 @@ button {
     display: inline-block;
     width: 100%;
     height: 100%;
-    /* margin-top: 3rem; */
+    max-width: 125rem;
     -webkit-mask-image: url("../src/assets/HeroTextMask2.png");
     mask-image: url("../src/assets/HeroTextMask2.png");
     -webkit-mask-size: 120%;
@@ -188,7 +195,6 @@ button {
 
 
 
-
 /* Theater View Modal */
 .theaterContainer {
     width: 100%;
@@ -255,6 +261,14 @@ button {
     color: var(--tan);
 }
 
+.spinner {
+    width: 17rem;
+    height: 17rem;
+    padding: 3rem;
+    margin: 0 auto;
+    animation: spinner 1.4s linear infinite;
+}
+
 /* .refreshBtn {
     width: 170px;
     height: 50px;
@@ -294,7 +308,8 @@ button {
     margin-bottom: 28px;
     overflow: scroll;
     overflow-y: hidden;
-
+    display: flex;
+    align-items: center;
 }
 
 /* Videos (paid and free) */

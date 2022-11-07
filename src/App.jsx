@@ -7,9 +7,7 @@ import Cart from './components/Cart'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
 import Theater from './components/Theater'
-import FilterComponent from './components/FilterComponent'
 import Gallery from './components/Gallery'
-
 
 function App() {
     const [data, setData] = useState([])
@@ -17,6 +15,7 @@ function App() {
     const [cartItems, setCartItems] = useState([])
     const [showCart, setShowCart] = useState(true)
     const [showFilter, setShowFilter] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     // Fetch data from api
     useEffect(() => {
@@ -32,6 +31,7 @@ function App() {
                     }
                 })
                 setData(completeData)
+                setIsLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -56,6 +56,8 @@ function App() {
                     setCartItems={setCartItems}
                     setData={setData}
                     setTheater={setTheater}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
                 />
                 <section className="gallery">
                     <div className="galleryHeadContainer">
@@ -70,6 +72,8 @@ function App() {
                             setCartItems={setCartItems} 
                             showFilter={showFilter}
                             setShowFilter={setShowFilter}
+                            isLoading={isLoading}
+                            setIsLoading={setIsLoading}
                         />
                     </div>
                 </section>
@@ -85,15 +89,8 @@ function App() {
 export default App
 
 
-// components:
-// -video-paid
-// -video-free 
-// -cart window
-// theater-mode window
-
 // responsiveness of main gallery (always have full rows)
 // box-shadowing and similar
-//scroll bar distance from cards recommended
 // rremove empty css rules
 // add a circular rotational image until the data loads
 // replace px with rem in some places?
@@ -107,3 +104,5 @@ export default App
 // x-ing out shoudl reset filtering ot default options
 // move filtering component logic to the componentjust like the sort one?
 // add length to videopaid thumbnail
+// responsive design
+// too many recommended videos laoding :/

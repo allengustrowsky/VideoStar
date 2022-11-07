@@ -2,13 +2,13 @@ import VideoFree from "./VideoFree"
 import VideoPaid from "./VideoPaid"
 import FilterComponent from "./FilterComponent"
 import FilterButton from "./FilterButton"
-import SortButton from "./SortButton"
 import SortDropdown from "./SortDropdown"
 import { useState } from "react"
 import { useEffect } from "react"
+import spinner from "../assets/spinner.svg"
 
 const Gallery = (props) => {
-    const { data, setData, setTheater, setCartItems, showFilter, setShowFilter, } = props
+    const { data, setData, setTheater, setCartItems, showFilter, setShowFilter, isLoading, setIsLoading, } = props
 
     const [filterData, setFilterData] = useState({
         "title": "",
@@ -22,7 +22,7 @@ const Gallery = (props) => {
     const [filterVideos, setFilterVideos] = useState([])
     // possible values for sortType: "title", "length", "free", "paid", default: ""
     const [sortType, setSortType] = useState("")
-    
+
     /**
      * Takes a formatted duration string in "mm:ss.s" format and converts 
      * it to an integer value.
@@ -101,7 +101,7 @@ const Gallery = (props) => {
         })
         setFilterVideos(sortVideos(filteredVideos))
     }, [data, filterData, sortType])
-    
+
     return (
         <>
             {!showFilter ?
@@ -115,28 +115,32 @@ const Gallery = (props) => {
                 <SortDropdown sortType={sortType} setSortType={setSortType} />
             }
 
-            {filterVideos.map(video => {
-                const videoData = {
-                    "id": video.id,
-                    "name": video.name,
-                    "isPurchased": video.isPurchased,
-                    "isFavorite": video.isFavorite,
-                    "duration": video.duration,
-                    "size": video.size,
-                    "price": video.price,
-                    "url": video.url,
-                    "setTheater": setTheater,
-                    "setData": setData,
-                }
-                if (video.isFree || video.isPurchased) {
-                    return <VideoFree key={video.id} info={videoData} />
-                } else {
-                    return <VideoPaid key={video.id} info={{
-                        ...videoData,
-                        setCartItems: setCartItems,
-                    }} />
-                }
-            })}
+            {isLoading ?
+                // Load spinner if videos are still loading
+                <img className="spinner" src={spinner} alt="page loading" /> :
+
+                filterVideos.map(video => {
+                    const videoData = {
+                        "id": video.id,
+                        "name": video.name,
+                        "isPurchased": video.isPurchased,
+                        "isFavorite": video.isFavorite,
+                        "duration": video.duration,
+                        "size": video.size,
+                        "price": video.price,
+                        "url": video.url,
+                        "setTheater": setTheater,
+                        "setData": setData,
+                    }
+                    if (video.isFree || video.isPurchased) {
+                        return <VideoFree key={video.id} info={videoData} />
+                    } else {
+                        return <VideoPaid key={video.id} info={{
+                            ...videoData,
+                            setCartItems: setCartItems,
+                        }} />
+                    }
+                })}
         </>
     )
 }

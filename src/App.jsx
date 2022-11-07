@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import './App.css'
-import VideoFree from './components/VideoFree'
-import VideoPaid from './components/VideoPaid'
 import Cart from './components/Cart'
 import Hero from './components/Hero'
 import Recommended from './components/Recommended'
@@ -92,6 +90,4 @@ export default App
 // rremove empty css rules
 // replace px with rem in some places?
 //add a readme.md
-// responsive design
 // code formatting - putting long lines on multiple lines
-// responsive design

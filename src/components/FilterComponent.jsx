@@ -30,31 +30,43 @@ const FilterComponent = (props) => {
 
     return (
         <>
-            <input className="titleInput" type="text" value={filterData.title} id="title" placeholder="Title...." onChange={handleChange} />
-            <input className="lengthInput" type="number" id="minLength" value={filterData.minLength} min="0" max="3599" onChange={handleChange} />
-            <input className="lengthInput" type="number" id="maxLength" value={filterData.maxLength} min="0" max="3599" onChange={handleChange} />
+            <div className="longInputs">
+                <input className="titleInput" type="text" value={filterData.title} id="title" placeholder="Title...." onChange={handleChange} />
+                <div className="minLengthCont lengthCont">
+                    <input className="lengthInput" type="number" id="minLength" value={filterData.minLength} min="0" max="3599" onChange={handleChange} />
+                    <label htmlFor="minLength" className="lengthLabel">Min Length</label>
+                </div>
+                <div className="maxLengthCont lengthCont">
+                    <input className="lengthInput" type="number" id="maxLength" value={filterData.maxLength} min="0" max="3599" onChange={handleChange} />
+                    <label htmlFor="maxLength" className="lengthLabel">Max Length</label>
+                </div>
 
-            <span className="inputContainer">
-                <input type="checkbox" id="free" onChange={handleChange} checked={filterData["free"]} />
-                <label htmlFor="free">Free</label>
-            </span>
+            </div>
 
-            <span className="inputContainer">
-                <input type="checkbox" id="paid" onChange={handleChange} checked={filterData["paid"]} />
-                <label htmlFor="paid">Paid</label>
-            </span>
+            <div className="shortInputs">
+                <span className="inputContainer">
+                    <input type="checkbox" id="free" onChange={handleChange} checked={filterData["free"]} />
+                    <label htmlFor="free">Free</label>
+                </span>
+
+                <span className="inputContainer">
+                    <input type="checkbox" id="paid" onChange={handleChange} checked={filterData["paid"]} />
+                    <label htmlFor="paid">Paid</label>
+                </span>
+
+                <span className="inputContainer">
+                    <input type="checkbox" id="favorite" onChange={handleChange} checked={filterData["favorite"]} />
+                    <label htmlFor="favorite">Favorite</label>
+                </span>
+
+                <span className="inputContainer">
+                    <input type="checkbox" id="purchased" onChange={handleChange} checked={filterData["purchased"]} />
+                    <label htmlFor="purchased">Purchased</label>
+                </span>
+            </div>
 
 
-            <span className="inputContainer">
-                <input type="checkbox" id="favorite" onChange={handleChange} checked={filterData["favorite"]} />
-                <label htmlFor="favorite">Favorite</label>
-            </span>
 
-
-            <span className="inputContainer">
-                <input type="checkbox" id="purchased" onChange={handleChange} checked={filterData["purchased"]} />
-                <label htmlFor="purchased">Purchased</label>
-            </span>
 
             <img className="exitFilterIcon" src={exit} alt="click to hide filter options" onClick={handleClick} />
 

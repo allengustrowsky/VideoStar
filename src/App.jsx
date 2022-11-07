@@ -86,8 +86,3 @@ function App() {
 
 export default App
 
-
-// rremove empty css rules
-// replace px with rem in some places?
-//add a readme.md
-// code formatting - putting long lines on multiple lines

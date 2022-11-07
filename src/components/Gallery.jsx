@@ -104,16 +104,17 @@ const Gallery = (props) => {
 
     return (
         <>
-            {!showFilter ?
-                <FilterButton setShowFilter={setShowFilter} /> :
-                <div className="filterContainer">
-                    <FilterComponent filterData={filterData} setFilterData={setFilterData} setShowFilter={setShowFilter} />
-                </div>
-            }
+            <div className="filterSortBox">
+                {!showFilter ?
+                    <FilterButton setShowFilter={setShowFilter} /> :
+                    <div className="filterContainer">
+                        <FilterComponent filterData={filterData} setFilterData={setFilterData} setShowFilter={setShowFilter} />
+                    </div>
+                }
 
-            {
                 <SortDropdown sortType={sortType} setSortType={setSortType} />
-            }
+            </div>
+
 
             {isLoading ?
                 // Load spinner if videos are still loading

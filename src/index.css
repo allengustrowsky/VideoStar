@@ -9,9 +9,9 @@
     --light-green: #92ba92;
     --dark: #2a2a2a;
 
-    --main-border-radius: 13px;
-    --main-box-shadow: 0 0 20px 5px #3e3e3e;
-
+    --main-border-radius: 0.9rem;
+    /* --main-box-shadow: 0 0 20px 5px #3e3e3e; */
+    --main-box-shadow: 0 0.3rem 2rem 0rem rgba(0, 0, 0, 0.4);
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -431,11 +431,11 @@ button {
     align-items: center;
     border-left: 1px solid var(--dark);
 }
-.paidThumbnail {
 
-}
+
 
 /* Gallery Section */
+
 .gallery {
     background-color: var(--blue);
     padding-bottom: 70px;
@@ -445,8 +445,6 @@ button {
 .galleryHeadContainer {
     height: 140px;
     background-color: var(--dark-green);
-    /* background-color: orange; */
-
 }
 
 .galleryHeader {
@@ -461,7 +459,29 @@ button {
 
 .filterContainer {
     padding: 2rem;
-    border: 2px solid black;
+    /* border: 1px solid var(--tan); */
+    box-shadow: var(--main-box-shadow);
+    border-radius: var(--main-border-radius);
+    color: var(--tan);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.filterContainer > input {
+    background-color: var(--dark-green);
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.inputContainer {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.lengthInput {
+    width: 6rem;
 }
 
 .exitFilterIcon {
@@ -492,6 +512,29 @@ button {
     margin: 0 auto;
     background-color: var(--blue);
     /* background-color: red; */
+}
+
+.filterSortBox {
+    width: 100%;
+    padding: 0 4rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.filterBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.filterBtn:hover {
+    cursor: pointer;
+}
+
+.filterIcon {
+    width: 1.35rem;
+    height: 1.35rem;
 }
 
 

@@ -1,3 +1,4 @@
+import filter from "../assets/filter.svg"
 
 const FilterButton = (props) => {
     const { setShowFilter } = props
@@ -7,8 +8,8 @@ const FilterButton = (props) => {
     }
 
     return (
-        <button onClick={handleClick}>
-            Filter button
+        <button className="filterBtn" onClick={handleClick}>
+            Filter <img className="filterIcon" src={filter}  alt="filter icon"/>
         </button>
     )
 }

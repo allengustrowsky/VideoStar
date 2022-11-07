@@ -30,6 +30,23 @@ const VideoPaid = (props) => {
             return newCarItems
         })
     }
+
+    /**
+     * Takes a string in the format "HH:mm:ss.s", and it the leading three numbers 
+     * are zero then they will be removed, 
+     * e.g. "00:00:14.32" -> "0:14.32"
+     * @param {string} time the string in the format "HH:mm:ss.s" to be shortened.
+     * @returns {string} shortened time value
+     */
+    const shortenedTime = (time) => {
+        let startIdx = 0;
+        for (startIdx; startIdx < 4; startIdx++) {
+            if (time[startIdx] !== "0" && time[startIdx] !== ":") {
+                break;
+            }
+        }
+        return time.slice(startIdx)
+    }
     
     return (
         <div className="videoContainer" >
@@ -51,6 +68,7 @@ const VideoPaid = (props) => {
                 <div className="paidHoverIconCont hoverIconContainer">
                     <img className="cart hoverIcon" src={cart} alt="click to add to cart" onClick={handleClick} />
                 </div>
+                <p className="paidDuration">{shortenedTime(duration)}</p>
             </div>
 
         </div>

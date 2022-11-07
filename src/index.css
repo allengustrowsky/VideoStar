@@ -397,6 +397,14 @@ button {
     margin: 0;
 }
 
+.paidDuration {
+    color: var(--dark-green);
+    width: 100%;
+    text-align: right;
+    padding: 0.5rem;
+    margin: 0;
+}
+
 
 .videoInfo {
     display: flex;

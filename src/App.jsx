@@ -94,6 +94,5 @@ export default App
 //add a readme.md
 // responsive design
 // code formatting - putting long lines on multiple lines
-// add length to videopaid thumbnail
 // responsive design
 // too many recommended videos laoding :/

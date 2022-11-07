@@ -65,11 +65,7 @@ const FilterComponent = (props) => {
                 </span>
             </div>
 
-
-
-
             <img className="exitFilterIcon" src={exit} alt="click to hide filter options" onClick={handleClick} />
-
         </>
     )
 }

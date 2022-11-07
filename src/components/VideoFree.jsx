@@ -22,7 +22,7 @@ const VideoFree = (props) => {
     }
 
     const handleClickFavorite = () => {
-        // mark this video as favorited
+        // Mark this video as favorited
         setData(prevData => prevData.map(video => {
             if (video.id === id) {
                 return {
@@ -47,7 +47,6 @@ const VideoFree = (props) => {
 
             <div className="videoInfo videoInfoFree">
                 <h3 className="videoTitle">{name}</h3>
-                {/* <p className="videoPrice">${price}</p> */}
             </div>
 
             <div className="hoverElement">

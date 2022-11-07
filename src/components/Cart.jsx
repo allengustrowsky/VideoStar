@@ -1,5 +1,4 @@
 import exit from "../assets/exit.svg"
-import rightArrow from "../assets/arrow.svg"
 import CartVideo from "../components/CartVideo"
 import { useEffect, useState } from "react"
 
@@ -40,12 +39,6 @@ const Cart = (props) => {
             <hr />
 
             <p className="total">Total: ${total}</p>
-
-
-            {/* {cartItems.length > 0 && (<button id="completeOrderBtn">
-                <p>Complete Order</p>
-                <img id="rightArrow" src={rightArrow} alt="right arrow" />
-            </button>)} */}
         </div>
     )
 }

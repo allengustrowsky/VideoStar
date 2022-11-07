@@ -6,14 +6,6 @@ const Theater = (props) => {
         // Remove video from theater array
         setTheater([])
     }
-// const duration = "00:00:16.93"
-// const id = 0
-// const isFree = false
-// const isPurchased = false
-// const name = "A Girl Taking a Selfie With Her Boyfriend"
-// const price = 7.62
-// const size = 7990219
-// const url = "https://videostar.dacoder.io/videos/a-girl-taking-a-selfie-with-her-boyfriend.mp4"
 
     return (
         <div className="theaterContainer">

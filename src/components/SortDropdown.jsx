@@ -1,5 +1,3 @@
-import exit from "../assets/exit.svg"
-
 const SortDropdown = (props) => {
     const { sortType, setSortType,} = props
 

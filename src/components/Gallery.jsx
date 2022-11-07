@@ -20,7 +20,7 @@ const Gallery = (props) => {
         "purchased": false,
     })
     const [filterVideos, setFilterVideos] = useState([])
-    // possible values for sortType: "title", "length", "free", "paid", default: ""
+    // Possible values for sortType: "title", "length", "free", "paid", default: ""
     const [sortType, setSortType] = useState("")
 
     /**
@@ -141,7 +141,8 @@ const Gallery = (props) => {
                             setCartItems: setCartItems,
                         }} />
                     }
-                })}
+                })
+            }
         </>
     )
 }

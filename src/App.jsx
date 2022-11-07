@@ -95,4 +95,3 @@ export default App
 // responsive design
 // code formatting - putting long lines on multiple lines
 // responsive design
-// too many recommended videos laoding :/

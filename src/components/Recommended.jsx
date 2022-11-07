@@ -38,35 +38,38 @@ const Recommended = (props) => {
                     // Load spinner if videos are still loading
                     <img className="spinner" src={spinner} alt="page loading" /> :
 
-                    recommended.map(video => {
-                        const videoData = {
-                            "id": video.id,
-                            "name": video.name,
-                            "isPurchased": video.isPurchased,
-                            "isFavorite": video.isFavorite,
-                            "duration": video.duration,
-                            "size": video.size,
-                            "price": video.price,
-                            "url": video.url,
-                            "setTheater": setTheater,
-                            "setData": setData,
-                        }
-                        if (video.isFree || video.isPurchased) {
-                            return <VideoFree
-                                key={video.id}
-                                info={{
-                                    ...videoData,
-                                    setTheater: setTheater,
-                                }}
-                            />
-                        } else {
-                            return <VideoPaid
-                                key={video.id}
-                                info={{
-                                    ...videoData,
-                                    setCartItems: setCartItems,
-                                }}
-                            />
+                    recommended.map((video, idx) => {
+                        // Limit to 5 paid videos recommended at a time
+                        if (idx < 5) { 
+                            const videoData = {
+                                "id": video.id,
+                                "name": video.name,
+                                "isPurchased": video.isPurchased,
+                                "isFavorite": video.isFavorite,
+                                "duration": video.duration,
+                                "size": video.size,
+                                "price": video.price,
+                                "url": video.url,
+                                "setTheater": setTheater,
+                                "setData": setData,
+                            }
+                            if (video.isFree || video.isPurchased) {
+                                return <VideoFree
+                                    key={video.id}
+                                    info={{
+                                        ...videoData,
+                                        setTheater: setTheater,
+                                    }}
+                                />
+                            } else {
+                                return <VideoPaid
+                                    key={video.id}
+                                    info={{
+                                        ...videoData,
+                                        setCartItems: setCartItems,
+                                    }}
+                                />
+                            }
                         }
                     })}
             </div>

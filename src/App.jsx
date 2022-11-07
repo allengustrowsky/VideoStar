@@ -13,7 +13,7 @@ function App() {
     const [data, setData] = useState([])
     const [theater, setTheater] = useState([])
     const [cartItems, setCartItems] = useState([])
-    const [showCart, setShowCart] = useState(true)
+    const [showCart, setShowCart] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 

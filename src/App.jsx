@@ -90,15 +90,10 @@ export default App
 
 
 // responsiveness of main gallery (always have full rows)
-// box-shadowing and similar
 // rremove empty css rules
-// add a circular rotational image until the data loads
 // replace px with rem in some places?
 //add a readme.md
 // add border radius to theater view
-// pu tin the while-loading spinner
-// make cart button work
-// make sure when item is removed from cart that isFavorite is set to false
 // responsive design
 // code formatting - putting long lines on multiple lines
 // x-ing out shoudl reset filtering ot default options

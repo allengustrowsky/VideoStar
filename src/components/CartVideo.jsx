@@ -5,12 +5,13 @@ const cartVideo = (props) => {
     const { id, name, price, url, setData, setCartItems} = props.items
 
     const handleClick = () => {
-        // mark this video as purchased
+        // unmark this video as purchased
         setData(prevData => prevData.map(video => {
             if (video.id === id) {
                 return {
                     ...video,
-                    isPurchased: false
+                    isPurchased: false,
+                    isFavorite: false,
                 }
             } else {
                 return video

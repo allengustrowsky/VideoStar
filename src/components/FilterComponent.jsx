@@ -3,7 +3,7 @@ import exit from "../assets/exit.svg"
 const FilterComponent = (props) => {
     const { filterData, setFilterData, setShowFilter } = props
 
-    // hide filtering display and reset filter parameters to default value (displays all videos)
+    // Hide filtering display and reset filter parameters to default value (displays all videos)
     const handleClick = () => {
         setShowFilter(false)
         setFilterData({
@@ -29,7 +29,7 @@ const FilterComponent = (props) => {
     }
 
     return (
-        <div className="filterContainer">
+        <>
             <input type="text" value={filterData.title} id="title" placeholder="Title...." onChange={handleChange} />
             <input type="number" id="minLength" value={filterData.minLength} min="0" max="3599" onChange={handleChange} />
             <input type="number" id="maxLength" value={filterData.maxLength} min="0" max="3599" onChange={handleChange} />
@@ -48,8 +48,7 @@ const FilterComponent = (props) => {
             
             <img className="exitFilterIcon" src={exit} alt="click to hide filter options" onClick={handleClick} />
 
-        </div>
-        
+        </>
     )
 }
 

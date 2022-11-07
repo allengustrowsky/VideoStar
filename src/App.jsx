@@ -16,15 +16,6 @@ function App() {
     const [theater, setTheater] = useState([])
     const [cartItems, setCartItems] = useState([])
     const [showCart, setShowCart] = useState(true)
-    const [filterData, setFilterData] = useState({
-        "title": "",
-        "minLength": 0,
-        "maxLength": 60,
-        "free": false,
-        "paid": false,
-        "favorite": false,
-        "purchased": false,
-    })
     const [showFilter, setShowFilter] = useState(false)
 
     // Fetch data from api
@@ -77,8 +68,6 @@ function App() {
                             setData={setData} 
                             setTheater={setTheater} 
                             setCartItems={setCartItems} 
-                            filterData={filterData} 
-                            setFilterData={setFilterData}
                             showFilter={showFilter}
                             setShowFilter={setShowFilter}
                         />
@@ -116,3 +105,5 @@ export default App
 // responsive design
 // code formatting - putting long lines on multiple lines
 // x-ing out shoudl reset filtering ot default options
+// move filtering component logic to the componentjust like the sort one?
+// add length to videopaid thumbnail

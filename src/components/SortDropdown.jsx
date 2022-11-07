@@ -10,7 +10,7 @@ const SortDropdown = (props) => {
 
     return (
         <>
-            <select name="sortDropdown" id="sortDropdown">
+            <select className="sortDropdown" name="sortDropdown" id="sortDropdown">
                 <option value="hiddenDefault" selected disabled hidden>Sort...</option>
                 <option value="title" className="sortItem" selected={sortType === "title"} onClick={handleClick}>Title</option>
                 <option value="length" className="sortItem" selected={sortType === "length"} onClick={handleClick}>Length</option>

@@ -89,15 +89,11 @@ function App() {
 export default App
 
 
-// responsiveness of main gallery (always have full rows)
 // rremove empty css rules
 // replace px with rem in some places?
 //add a readme.md
-// add border radius to theater view
 // responsive design
 // code formatting - putting long lines on multiple lines
-// x-ing out shoudl reset filtering ot default options
-// move filtering component logic to the componentjust like the sort one?
 // add length to videopaid thumbnail
 // responsive design
 // too many recommended videos laoding :/

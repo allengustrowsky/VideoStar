@@ -199,6 +199,7 @@ button {
 .theaterContainer {
     width: 100%;
     background-color: #2a2a2a;
+    border-radius: var(--main-border-radius);
     height: max-content;
     display: flex;
     flex-direction: column;

@@ -169,6 +169,10 @@ button {
     margin-bottom: 0.7rem;
 }
 
+.total {
+    font-size: 1.45rem;
+}
+
 #completeOrderBtn {
     width: 8rem;
     height: 4rem;

@@ -37,14 +37,15 @@ const Cart = (props) => {
                 })}
             </div>
 
-            <p className="total">Total: ${total}</p>
-
             <hr />
 
-            {cartItems.length > 0 && (<button id="completeOrderBtn">
+            <p className="total">Total: ${total}</p>
+
+
+            {/* {cartItems.length > 0 && (<button id="completeOrderBtn">
                 <p>Complete Order</p>
                 <img id="rightArrow" src={rightArrow} alt="right arrow" />
-            </button>)}
+            </button>)} */}
         </div>
     )
 }

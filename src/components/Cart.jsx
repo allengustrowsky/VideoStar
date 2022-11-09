@@ -38,7 +38,7 @@ const Cart = (props) => {
 
             <hr />
 
-            <p className="total">Total: ${total}</p>
+            <p className="total">Total: ${total.toFixed(2)}</p>
         </div>
     )
 }
